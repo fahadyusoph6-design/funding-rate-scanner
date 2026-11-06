@@ -1,0 +1,35 @@
+Fetching funding rates from 5 venues...
+  okx            ok: 528 perps in 4.3s
+  gate           ok: 1080 perps in 16.9s
+  bitget         ok: 884 perps in 6.7s
+  hyperliquid    ok: 179 perps in 9.3s
+  kucoinfutures  ok: 712 perps in 4.4s
+3383 perps, 1252 assets, 991 cross-venue pairs above 10% APR; checking order books for top 40...
+Dropped 16 of 40: 11 thin-book, 5 ticker-mismatch? (thin-book = visible depth can't fill $10,000)
+Analysing 7-day funding history for top 15...
+
+Top 15 funding-carry opportunities  (notional $10,000 per leg, horizon 72h)
+ #  Asset    Long (APR, next)   Short (APR, next)     Net APR  Cost bp  Basis bp  B/E h  Snap 72h bp  Pred 72h bp  7d mean  %pos  Half-life h  Flags                  
+--  -------  -----------------  --------------------  -------  -------  --------  -----  -----------  -----------  -------  ----  -----------  -----------------------
+ 1  NG       Gate 711% 8h/28m   OKX 1,095% 8h/28m        384%      102      -111     23          214           73     -24%   14%           42  spread-usually-negative
+ 2  BZ       OKX -444% 4h/28m   Gate -189% 8h/28m        254%       28       -21     10          181           61       9%   32%           23  spread-usually-negative
+ 3  BZ       OKX -444% 4h/28m   Bitget -234% 4h/~28m     210%       26       -12     11          146           18      15%   60%           10                         
+ 4  S        HypL -179% 1h/28m  Bitget 11% 4h/~28m       190%       68        13     31           88          -50      20%   71%            1                         
+ 5  S        HypL -179% 1h/28m  KuCoin 11% 4h/28m        190%      100        26     46           56          -79      16%   70%            3                         
+ 6  UVXY     OKX -212% 8h/28m   Gate 0% 8h/28m           212%      132       -24     55           42          -96      31%   43%            4  spread-usually-negative
+ 7  MELANIA  HypL -226% 1h/28m  Bitget 11% 4h/~28m       236%      109         2     40           85          -97      11%   40%            1  spread-usually-negative
+ 8  GMT      Gate -253% 8h/28m  Bitget -54% 4h/~28m      199%      142       -28     62           22         -103      27%   74%            6                         
+ 9  BB       Gate -238% 4h/28m  Bitget 11% 4h/~28m       249%      131        -2     46           74         -105      21%   50%            3                         
+10  MELANIA  HypL -226% 1h/28m  Gate 11% 4h/28m          236%      133        26     49           62         -122      11%   30%            1  spread-usually-negative
+11  BRETT    HypL 11% 1h/28m    Bitget 198% 4h/~28m      187%      173        -9     81          -19         -124      47%   40%            5  spread-usually-negative
+12  MELANIA  HypL -226% 1h/28m  KuCoin -6% 4h/28m        219%      300         4    120         -120            -        -     -            -                         
+13  GMT      Gate -253% 8h/28m  HypL 11% 1h/28m          264%      159       -26     53           58         -147       7%   33%            2  spread-usually-negative
+14  KII      Gate 11% 4h/28m    OKX 198% 4h/28m          187%      200        13     94          -47         -155      35%   57%            7                         
+15  BB       Gate -238% 4h/28m  KuCoin -51% 4h/28m       188%      306        -8    143         -151            -        -     -            -                         
+
+Cost = taker fees + 2x entry slippage, both legs, open and close.  Basis = short-venue premium over long venue.
+Snap = net return if today's funding spread held for the horizon.  Pred = AR(1) decay forecast from history.
+Next = time to next funding payment (~ = estimated from the interval; venue did not report it).
+
+Saved 24 opportunities -> out\opportunities_20261106T2331Z.csv
+                   -> out\opportunities_20261106T2331Z.json
